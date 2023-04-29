@@ -1,5 +1,7 @@
 package com.restfulProject.restfulProject.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.BatchSize;
@@ -8,9 +10,10 @@ import java.time.LocalDate;
 
 public class User {
 
-
+    @JsonIgnore
     private Integer id;
     @Size(min=2, message = "Minimum size of Name should be 2 char")
+    @JsonProperty("User Name")
     private String name;
     @Past
     private LocalDate birthDate;

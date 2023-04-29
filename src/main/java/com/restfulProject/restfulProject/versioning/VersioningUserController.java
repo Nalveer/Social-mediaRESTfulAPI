@@ -16,4 +16,13 @@ public class VersioningUserController {
         return new UserV2(new Name("Bob","Charlie"));
     }
 
+    @GetMapping(path = "/user", params= "version=1")
+    public UserV1 getFirstVersionOfUser_param(){
+        return new UserV1("Bob Charlie");
+    }
+
+    @GetMapping(path = "/user", params= "version=2")
+    public UserV2 getSecondVersionOfUser_param(){
+        return new UserV2(new Name("Bob","Charlie"));
+    }
 }

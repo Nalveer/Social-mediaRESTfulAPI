@@ -32,6 +32,21 @@ public class UserController {
         }
     }
 
+/**
+    @GetMapping("/users/{id}")
+    public EntityModel<User> getUSer(@PathVariable int id){
+        User user = dao_service.finduser(id);
+        if(user==null){
+            throw new UserNotFoundException("id="+id);
+        }
+
+        EntityModel<User> entityModel = EntityModel.of(user);
+
+        WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).getAllUsers());
+        entityModel.add(link.withRel("all_users"));
+        return entityModel;
+    }
+    **/
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user){
         User saved_user = dao_service.saveUser(user);
