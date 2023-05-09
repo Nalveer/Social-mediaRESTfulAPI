@@ -2,21 +2,38 @@ package com.restfulProject.restfulProject.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Generated;
 
 import java.time.LocalDate;
+import java.util.List;
 
+
+@Entity(name = "user_details")
 public class User {
 
-    @JsonIgnore
+    protected  User(){
+
+    }
+
+
+    @Id
+    @GeneratedValue
     private Integer id;
     @Size(min=2, message = "Minimum size of Name should be 2 char")
-    @JsonProperty("User Name")
+    @JsonProperty("user_name")
+    @Column(name="user_name")
     private String name;
     @Past
+    @Column(name="birth_date")
     private LocalDate birthDate;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Post> posts;
 
     public User(Integer id, String name, LocalDate birthDate) {
         this.id = id;
@@ -46,6 +63,14 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
