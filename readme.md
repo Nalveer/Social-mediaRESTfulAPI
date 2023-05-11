@@ -4,4 +4,4 @@ A project to learn about making RESTful APIs with Spring Boot.
 
 Endpoints:
 
-![Capture](https://github.com/Nalveer/Social-mediaRESTfulAPI/assets/55257682/59e88ced-dfb4-4b19-a54a-74f28a0e2f98)
+![Capture](https://github.com/Nalveer/Social-mediaRESTfulAPI/assets/55257682/654eed0d-0152-49cb-a075-368fe21fb96f)
